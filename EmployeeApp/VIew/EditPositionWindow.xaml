@@ -1,0 +1,34 @@
+﻿<Window x:Class="EmployeeApp.VIew.EditPositionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EmployeeApp.VIew"
+        mc:Ignorable="d"
+        Title="EditPositionWindow" Height="300" Width="300"
+        Name="EditPositionWnd">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" 
+                    Orientation="Vertical" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+            <TextBlock Text="New Name"/>
+            <TextBox Text="{Binding PositionName}"/>
+            <TextBlock Text="New Salary"/>
+            <TextBox Text="{Binding PositionSalary}" PreviewTextInput="PreviewTextInput" />
+            <TextBlock Text="New Max of vacancies"/>
+            <TextBox Text="{Binding PositionMaxNumber}" PreviewTextInput="PreviewTextInput" />
+            <TextBlock Text="New Department"/>
+            <ComboBox ItemsSource="{Binding AllDepartments}"
+                      DisplayMemberPath="Name"
+                      SelectedItem="{Binding PositionDepartment}"/>
+        </StackPanel>
+        <Button Grid.Row="1" Content="Edit pisotoin" Width="100"
+                Command="{Binding EditPosition}"
+                CommandParameter="{Binding ElementName=EditPositionWnd}"/>
+    </Grid>
+</Window>
